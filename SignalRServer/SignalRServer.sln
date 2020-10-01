@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRServer", "SignalRServer\SignalRServer.csproj", "{E7518BFB-C2C2-4CCA-B72C-31D5DC8000D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{C20C4294-084A-4A3C-BF66-CBE8D8FB0EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientLibrary", "ClientLibrary\ClientLibrary.csproj", "{873AC8BD-4166-413B-B1B5-C014E2CF031A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{E7518BFB-C2C2-4CCA-B72C-31D5DC8000D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7518BFB-C2C2-4CCA-B72C-31D5DC8000D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7518BFB-C2C2-4CCA-B72C-31D5DC8000D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C20C4294-084A-4A3C-BF66-CBE8D8FB0EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20C4294-084A-4A3C-BF66-CBE8D8FB0EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20C4294-084A-4A3C-BF66-CBE8D8FB0EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20C4294-084A-4A3C-BF66-CBE8D8FB0EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{873AC8BD-4166-413B-B1B5-C014E2CF031A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{873AC8BD-4166-413B-B1B5-C014E2CF031A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{873AC8BD-4166-413B-B1B5-C014E2CF031A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{873AC8BD-4166-413B-B1B5-C014E2CF031A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
