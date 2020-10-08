@@ -1,52 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Subjects;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace ClientLibrary
 {
-    public class Chat
+    public abstract class Chat
     {
-        private HubConnection connection;
-        private string name;
-        private Func<string> readName;
-        private Func<string> read;
+        protected Chat()
+        {
+            _connection = ConnectionBuilder.ConfigureConnection();
+            messages = new Subject<string>();
+            messages.Subscribe(Write);
+        }
+
+        private readonly HubConnection _connection;
         private ISubject<string> messages;
 
-        public Chat(Func<string> readName, Func<string> read, Action<string> writeNewMessage)
-        {
-            this.readName = readName;
-            this.read = read;
-            messages = new Subject<string>();
-            messages.Subscribe(writeNewMessage);
-            connection = ConnectionBuilder.ConfigureConnection();
-        }
+        protected string Name { get; set; }
 
-        private async Task StartListening()
-        {
-            while (true)
-            {
-                var message = read();
-                await Send(message);
-            }
-        }
+        protected abstract Task StartListening();
 
         protected async Task Send(string message)
         {
-            await connection.InvokeAsync("Send", message, name);
+            await _connection.InvokeAsync("Send", message, Name);
         }
-        
+
+        protected abstract void Write(string message);
+
+        protected abstract void ReadName();
+
         public async Task StartChat()
         {
-            connection.On<string, string>("sendMessage", (message, name) =>
+            _connection.On<string, string>("sendMessage", (message, name) =>
             {
-                messages.OnNext($"{name}: {message}");
+                messages.OnNext($"{Name}: {message}");
             });
-            name = readName();
-            await connection.StartAsync();
-            await Send($"{name} is connected");
+            ReadName();
+            await _connection.StartAsync();
+            await Send($"{Name} is connected");
             await StartListening();
         }
     }
